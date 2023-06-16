@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+}
+
+i {
+    color: yellow;
+    position: absolute;
+    animation: fall 5s linear forwards;
+    top: -20px;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
