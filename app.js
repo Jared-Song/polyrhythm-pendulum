@@ -12,7 +12,7 @@ const draw = () => {
     x: canvas.width * 0.5,
     y: canvas.height * frameHeight,
   };
-  
+
   // draw root circle
   pen.strokeStyle = "blue";
   pen.lineWidth = circleLineWidth;
@@ -46,7 +46,7 @@ const draw = () => {
 
   // pendulum
   pen.strokeStyle = "white";
-  pen.lineWidth = 2;
+  pen.lineWidth = lineWidth * 4;
   const length = canvas.width;
 
   const currentTime = new Date().getTime();
@@ -65,6 +65,18 @@ const draw = () => {
 
   pen.beginPath();
   pen.arc(x, y, radius * 0.6, 0, 2 * Math.PI);
+  pen.stroke();
+
+  // pendulum chain
+  pen.strokeStyle = "gray";
+  pen.lineWidth = lineWidth;
+  const chainLength = arcRadius;
+  pen.beginPath();
+  pen.moveTo(
+    center.x + radius * Math.cos(adjustedDistance),
+    center.y + radius * Math.sin(adjustedDistance)
+  );
+  pen.lineTo(x, y);
   pen.stroke();
 
   requestAnimationFrame(draw);
